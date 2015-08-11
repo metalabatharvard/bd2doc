@@ -31,13 +31,12 @@
         	var tags = {};
         	tags["all"] = [];
         	
-        	$.get("draft.json", function(data) {
+        	$.get("data.json", function(data) {
         		for(var prop in data) {
-        			console.log(prop);
         			tags[prop] = [];
         			$.each(data[prop], function(i,val) {   
-        				if(val["materials"]) {    				
-									$.each(val["materials"], function(j,tag) {
+        				if(val["tags"]) {    				
+									$.each(val["tags"], function(j,tag) {
 										if(tags[prop].indexOf(tag) == -1) tags[prop].push(tag);
 										if(tags["all"].indexOf(tag) == -1) tags["all"].push(tag);
 									});
@@ -49,10 +48,14 @@
 						for(var prop in tags) {
 							console.log(prop);
 							$.each(tags[prop], function(i,val) {
-								console.log(val);
+							//	console.log(val);
 							});
-							console.log("");
+						//	console.log("");
 						}
+						
+						$.each(tags["all"], function(i,val) {
+							console.log(val);
+						});
         	});
         	
 
